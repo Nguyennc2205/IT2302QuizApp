@@ -4,20 +4,20 @@
  */
 package com.ncn.pojo;
 
-
-
 /**
  *
  * @author admin
  */
+public class Level {
 
-public class Category {
     private int id;
     private String name;
-    
-    public Category(int id, String name){
+    private String note;
+
+    public Level(int id, String name, String note) {
         this.id = id;
         this.name = name;
+        this.note = note;
     }
 
     @Override
@@ -25,6 +25,7 @@ public class Category {
         return this.getName(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
+    
     /**
      * @return the id
      */
@@ -52,5 +53,18 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    /**
+     * @return the note
+     */
+    public String getNote() {
+        return note;
+    }
+
+    /**
+     * @param note the note to set
+     */
+    public void setNote(String note) {
+        this.note = note;
+    }
 }

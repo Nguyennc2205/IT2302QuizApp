@@ -5,7 +5,9 @@
 package com.ncn.quizapp;
 
 import com.ncn.pojo.Category;
+import com.ncn.pojo.Level;
 import com.ncn.services.CategoryServices;
+import com.ncn.services.LevelServices;
 import com.ncn.utils.JdbcConnector;
 import java.net.URL;
 import java.sql.Connection;
@@ -30,8 +32,11 @@ public class QuestionController implements Initializable {
 
     @FXML
     private ComboBox<Category> cbCates;
+    @FXML
+    private ComboBox<Level> cbLevels;
 
     private final static CategoryServices cateService = new CategoryServices();
+    private final static LevelServices levelService = new LevelServices();
 
     /**
      * Initializes the controller class.
@@ -40,6 +45,7 @@ public class QuestionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             this.cbCates.setItems(FXCollections.observableList(cateService.getCates()));
+            this.cbLevels.setItems(FXCollections.observableList(levelService.getLevels()));
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

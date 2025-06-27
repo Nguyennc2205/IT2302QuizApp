@@ -5,6 +5,7 @@
 package com.ncn.services;
 
 import com.ncn.pojo.Category;
+import com.ncn.pojo.Level;
 import com.ncn.utils.JdbcConnector;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,24 +18,23 @@ import java.util.List;
  *
  * @author admin
  */
-public class CategoryServices {
+public class LevelServices {
 
-    public List<Category> getCates() throws SQLException {
+    public List<Level> getLevels() throws SQLException {
         Connection conn = JdbcConnector.getInstance().connect();
 
         Statement stm = conn.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT * FROM category");
+        ResultSet rs = stm.executeQuery("SELECT * FROM level");
 
-        List<Category> cates = new ArrayList<>();
+        List<Level> levels = new ArrayList<>();
         while (rs.next()) {
             int id = rs.getInt("id");
             String name = rs.getString("name");
-            System.out.printf("%d - %s\n", id, name);
-            Category c = new Category(id, name);
-            cates.add(c);
+            String note = rs.getString("note");
+            Level c = new Level(id, name, note);
+            levels.add(c);
         }
 
-//        conn.close();
-        return cates;
+        return levels;
     }
 }
